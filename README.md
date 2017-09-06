@@ -41,6 +41,7 @@ create index phone_book_last_name on phone_book(last_name);
 | Williams | 4 |
 
 ^Databases create a structure that orders the data and tells them where to look
+
 ^The database now looks up the rows of everyone with that last name and then pulls that data from disk.
 
 ---
@@ -139,6 +140,7 @@ select * from phone_book where last_name = 'Whitney'
 Uses: `phone_book_first_last_name`
 
 ^The last/first name index offers the same sort as our last name index.
+
 ^It's sorted by last name first, so it's easy for the DB to identify what rows to pull from disk.
 
 ---
