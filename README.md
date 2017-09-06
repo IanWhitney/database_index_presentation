@@ -145,7 +145,7 @@ Uses: `phone_book_first_last_name`
 
 ---
 
-# Delete that first name index!
+# Delete that last name index!
 ## It's redundant
 
 More: https://z.umn.edu/indexes
