@@ -1,4 +1,9 @@
-# Database Indexes for Fun and Speed
+# Database Indexes<br />for Fun and Speed
+
+> Ian Whitney
+> whit0694@umn.edu
+> @ian_whitney (Slack)
+
 
 ---
 
@@ -22,6 +27,10 @@
 select * from phone_book where last_name = 'Whitney'
 ```
 
+^The database has no way of knowing where these records are.
+
+^So all it can do is pull the entire table from disk into memory and check each row.
+
 ---
 
 #  Let's add an index
@@ -40,9 +49,9 @@ create index phone_book_last_name on phone_book(last_name);
 | Whitney | 6 | 
 | Williams | 4 |
 
-^Databases create a structure that orders the data and tells them where to look
+^An index creates a Database structure that orders the data by the indexed field
 
-^The database now looks up the rows of everyone with that last name and then pulls that data from disk.
+^It's now easy for the database to find all rows with a last name of Whitney.
 
 ---
 
@@ -52,7 +61,7 @@ create index phone_book_last_name on phone_book(last_name);
 select * from phone_book where last_name = 'Whitney' and first_name = 'Ian';
 ```
 
-^The database has to pull all Whitneys from disk and find the ones that match by first name.
+^The database has to pull all Whitneys from disk and then find the ones that match by first name.
 
 ---
 
@@ -145,7 +154,28 @@ Uses: `phone_book_first_last_name`
 
 ---
 
+# The Rule
+
+If the column(s) in your `where` clause are the left-most columns in a multi-column index: 👍
+
+```sql
+create index phone_book_last_first_name on phone_book(last_name, first_name);
+```
+
+✅ `where last_name = 'Whitney'`
+✅ `where last_name = 'Whitney' and first_name = 'Ian'`
+❌ `where first_name = 'Ian'`
+
+---
+
 # Delete that last name index!
 ## It's redundant
 
-More: https://z.umn.edu/indexes
+Slides:
+
+> https://z.umn.edu/indexes
+
+Video that taught me a bunch: 
+
+> https://z.umn.edu/index_talk
+
