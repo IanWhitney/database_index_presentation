@@ -162,8 +162,8 @@ If the column(s) in your `where` clause are the left-most columns in a multi-col
 create index phone_book_last_first_name on phone_book(last_name, first_name);
 ```
 
-✅ `where last_name = 'Whitney'`
-✅ `where last_name = 'Whitney' and first_name = 'Ian'`
+✅ `where last_name = 'Whitney'`<br />
+✅ `where last_name = 'Whitney' and first_name = 'Ian'`<br />
 ❌ `where first_name = 'Ian'`
 
 ---
